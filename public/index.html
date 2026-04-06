@@ -1,16 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cliente WebSocket</title>
-  </head>
-  <body>
-    <h1>Cliente WebSocket</h1>
-    <input type="text" id="message" placeholder="Escribe tu mensaje aquí..." />
-    <button id="send">Enviar</button>
-    <div id="messages"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat en Vivo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
 
-    <script src="app.js"></script>
-  </body>
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-dot"></span>
+          <span>CHAT<b>WS</b></span>
+        </div>
+        <div class="status-indicator">
+          <span class="dot" id="status-dot"></span>
+          <span id="status-text">Conectando…</span>
+        </div>
+      </div>
+
+      <div class="user-profile">
+        <div class="avatar" id="my-avatar"></div>
+        <div class="user-info">
+          <span class="label">Tu nombre</span>
+          <div class="rename-row">
+            <span id="my-name" class="my-name">—</span>
+            <button id="rename-btn" title="Cambiar nombre">✎</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="users-section">
+        <span class="section-title">EN LÍNEA <span id="user-count">0</span></span>
+        <ul id="user-list"></ul>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="chat-main">
+      <div class="chat-topbar">
+        <span class="chat-title"># general</span>
+        <span class="chat-subtitle">Chat en tiempo real con WebSockets</span>
+      </div>
+
+      <div class="messages-area" id="messages"></div>
+
+      <div class="typing-bar" id="typing-bar"></div>
+
+      <div class="input-area">
+        <input
+          type="text"
+          id="msg-input"
+          placeholder="Escribe un mensaje…"
+          autocomplete="off"
+          maxlength="500"
+        />
+        <button id="send-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Modal renombrar -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h3>Cambiar nombre</h3>
+      <input type="text" id="modal-input" placeholder="Nuevo nombre…" maxlength="20"/>
+      <div class="modal-actions">
+        <button id="modal-cancel">Cancelar</button>
+        <button id="modal-confirm" class="primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
