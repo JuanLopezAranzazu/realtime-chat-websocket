@@ -1,0 +1,22 @@
+{
+  "name": "realtime-chat-websocket",
+  "version": "1.0.0",
+  "description": "Chat en tiempo real utilizando WebSockets",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "chat",
+    "websocket",
+    "realtime"
+  ],
+  "author": "Juan Esteban Lopez",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
